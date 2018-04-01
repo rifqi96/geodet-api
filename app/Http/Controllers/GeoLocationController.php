@@ -26,7 +26,6 @@ class GeoLocationController extends Controller
 
     public function doAdd(Request $request){
         $validator = $this->getValidationFactory()->make($request->all(), [
-            'ipaddress' => 'required|ip',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric'
         ]);
