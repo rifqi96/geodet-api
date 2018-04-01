@@ -14,3 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('geolocation')->group(function() {
+    Route::get('', [
+        'uses' => 'GeoLocationController@index',
+        'as' => 'geolocation'
+    ]);
+    Route::get('{ipaddress}', [
+        'uses' => 'GeoLocationController@show',
+        'as' => 'geolocation.show'
+    ]);
+
+    Route::prefix('do')->group(function (){
+        Route::post('add', [
+            'uses' => 'GeoLocationController@doAdd',
+            'as' => 'geolocation.do.add'
+        ]);
+    });
+});
